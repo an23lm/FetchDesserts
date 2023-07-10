@@ -1,0 +1,19 @@
+# Xcode
+## User settings
+xcuserdata/
+
+## Build products
+DerivedData/
+Build/
+*.pbxuser
+!default.pbxuser
+*.xcworkspace
+!*.xcodeproj
+
+## Schemes
+*.xcscheme
+*.xcshareddata
+
+## Swift Package Manager
+Package.resolved
+
