@@ -30,9 +30,9 @@ class DessertDetailViewModel: ObservableObject {
         }
         
         do {
-            self.meal = try await apiService.load(Meal.forMealID(mealID)).meals!.first!
+            self.meal = try await apiService.load(Meal.forMealID(self.mealID)).meals!.first!
             self.error = nil
-            logger.debug("Detail Data Loaded for \(mealID)")
+            logger.debug("Detail Data Loaded for \(self.mealID)")
         } catch {
             logger.error("\(error.localizedDescription)")
             self.error = error.localizedDescription
