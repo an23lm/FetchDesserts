@@ -1,10 +1,12 @@
 import Foundation
+import os
 
 /// View Model for Dessert List View
 ///
 @MainActor
 class DessertListViewModel: ObservableObject {
     private let apiService: APIService = APIService()
+    private let logger = Logger(subsystem: "com.an23lm.FetchDesserts", category: "DessertListViewModel")
     
     @Published private(set) var meals: [Meal]? = nil
     @Published private(set) var isLoading: Bool = false
@@ -19,9 +21,9 @@ class DessertListViewModel: ObservableObject {
         do {
             self.meals = try await apiService.load(Meal.forCategory("Dessert")).meals!
             self.error = nil
-            print("List Data Loaded")
+            logger.debug("List Data Loaded")
         } catch {
-            print(error)
+            logger.error("\(error.localizedDescription)")
             self.error = error.localizedDescription
         }
     }

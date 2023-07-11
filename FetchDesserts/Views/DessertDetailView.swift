@@ -1,4 +1,5 @@
 import SwiftUI
+import os
 
 /// View which displays the details of a selected meal
 ///
@@ -7,11 +8,12 @@ import SwiftUI
 ///
 struct DessertDetailView: View {
     @ObservedObject var viewModel: DessertDetailViewModel
+    private let logger = Logger(subsystem: "com.an23lm.FetchDesserts", category: "DessertDetailView")
     
     func openWebpage(withURL url: URL?) -> () -> () {
         return {
             if url != nil && UIApplication.shared.canOpenURL(url!) {
-                print("Opening URL: \(url!.absoluteString)")
+                logger.debug("Opening URL: \(url!.absoluteString)")
                 UIApplication.shared.open(url!)
             } else {
                 let _ = Alert(title: Text("Something went wrong when opening the link"),

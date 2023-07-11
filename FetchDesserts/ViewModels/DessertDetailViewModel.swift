@@ -1,4 +1,5 @@
 import Foundation
+import os
 
 /// View Model for Dessert Detail View
 ///
@@ -11,6 +12,7 @@ class DessertDetailViewModel: ObservableObject {
     private let apiService: APIService = APIService()
     private(set) var mealID: String
     private(set) var mealTitle: String
+    private let logger = Logger(subsystem: "com.an23lm.FetchDesserts", category: "DessertDetailViewModel")
     
     @Published private(set) var isLoading: Bool = true
     @Published private(set) var error: String? = nil
@@ -24,17 +26,16 @@ class DessertDetailViewModel: ObservableObject {
     @Sendable func refreshData() async {
         self.isLoading = true
         defer {
-            print("isloading false")
             self.isLoading = false
         }
         
         do {
             self.meal = try await apiService.load(Meal.forMealID(mealID)).meals!.first!
             self.error = nil
-            print("Detail Data Loaded for \(mealID)")
+            logger.debug("Detail Data Loaded for \(mealID)")
         } catch {
-            print(error)
-            // Handle Error
+            logger.error("\(error.localizedDescription)")
+            self.error = error.localizedDescription
         }
     }
 }
