@@ -45,7 +45,8 @@ struct DessertDetailView: View {
                                 .cornerRadius(8)
                             VStack(alignment: .leading) {
                                 Text(viewModel.mealTitle)
-                                    .font(.system(.title, design: .serif, weight: .semibold))
+                                    .font(.system(.title, design: .serif))
+                                    .fontWeight(Font.Weight.semibold)
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text("Cusine")
@@ -68,16 +69,19 @@ struct DessertDetailView: View {
                         // group for ingredients
                         Group {
                             Text("Ingredients")
-                                .font(.system(.title, design: .serif, weight: .semibold))
+                                .font(.system(.title, design: .serif))
+                                .fontWeight(Font.Weight.semibold)
                                 .padding(.bottom, 8)
                             VStack(spacing: 0) {
                                 ForEach(Array(zip(viewModel.meal!.ingredients.indices, viewModel.meal!.ingredients)), id: \.0) { index, item in
                                     HStack() {
                                         Text(item.ingredient.capitalized)
-                                            .font(.system(.body, design: .rounded, weight: .semibold))
+                                            .font(.system(.body, design: .rounded))
+                                            .fontWeight(Font.Weight.semibold)
                                         Spacer()
                                         Text(item.measure)
-                                            .font(.system(.body, design: .monospaced, weight: .semibold))
+                                            .font(.system(.body, design: .monospaced))
+                                            .fontWeight(Font.Weight.semibold)
                                     }
                                     .padding()
                                     .background(index % 2 == 0 ? Color(.systemGray6) : Color.clear)
@@ -89,7 +93,8 @@ struct DessertDetailView: View {
                         // group for instructions
                         Group {
                             Text("Instructions")
-                                .font(.system(.title, design: .serif, weight: .semibold))
+                                .font(.system(.title, design: .serif))
+                                .fontWeight(Font.Weight.semibold)
                                 .padding(.bottom, 8)
                             
                             Text(viewModel.meal?.instructions ?? "No instructions available")
@@ -116,7 +121,8 @@ struct DessertDetailView: View {
                                             HStack {
                                                 Spacer()
                                                 Text("Watch and Cook")
-                                                    .font(.system(.headline, weight: .semibold))
+                                                    .font(.system(.headline))
+                                                    .fontWeight(Font.Weight.semibold)
                                                     .foregroundColor(.white)
                                                 Spacer()
                                             }
@@ -140,7 +146,8 @@ struct DessertDetailView: View {
                                             HStack {
                                                 Spacer()
                                                 Text("Visit Website")
-                                                    .font(.system(.headline, weight: .semibold))
+                                                    .font(.system(.headline))
+                                                    .fontWeight(Font.Weight.semibold)
                                                     .foregroundColor(.white)
                                                 Spacer()
                                             }

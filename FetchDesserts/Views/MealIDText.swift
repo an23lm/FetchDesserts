@@ -10,7 +10,7 @@ struct MealIDText: View {
     
     var body: some View {
         Text(mealID)
-            .font(.system(.caption, design: .monospaced, weight: .semibold))
+            .font(Font.caption.monospaced().weight(.semibold))
             .padding(4)
             .foregroundColor(.secondary)
             .background {

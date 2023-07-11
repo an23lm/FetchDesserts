@@ -17,8 +17,8 @@ struct DessertCell: View {
             VStack(alignment: .leading) {
                 Text(meal.strMeal.capitalized)
                     .font(.system(.title3, design: .rounded))
+                    .fontWeight(Font.Weight.semibold)
                     .multilineTextAlignment(.leading)
-                    .fontWeight(.semibold)
                 MealIDText(mealID: meal.idMeal)
             }
         }
