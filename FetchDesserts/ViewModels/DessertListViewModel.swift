@@ -5,12 +5,20 @@ import os
 ///
 @MainActor
 class DessertListViewModel: ObservableObject {
-    private let apiService: APIService = APIService()
+    private let apiService: APIService
     private let logger = Logger(subsystem: "com.an23lm.FetchDesserts", category: "DessertListViewModel")
     
     @Published private(set) var meals: [Meal]? = nil
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var error: String? = nil
+    
+    init() {
+        self.apiService = APIService()
+    }
+    
+    init(apiService: APIService) {
+        self.apiService = apiService
+    }
     
     @Sendable func refreshData() async {
         defer {

@@ -44,6 +44,6 @@ struct DessertListView: View {
 
 struct DessertListView_Previews: PreviewProvider {
     static var previews: some View {
-        DessertListView(viewModel: DessertListViewModel())
+        return DessertListView(viewModel: DessertListViewModel(apiService: PreviewAPIService()))
     }
 }

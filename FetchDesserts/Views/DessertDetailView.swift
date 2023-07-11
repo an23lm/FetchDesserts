@@ -165,6 +165,6 @@ struct DessertDetailView: View {
 
 struct DessertDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DessertDetailView(viewModel: DessertDetailViewModel(mealID: "53049", mealTitle: "Test Dessert"))
+        DessertDetailView(viewModel: DessertDetailViewModel(mealID: "52961", mealTitle: "Budino Di Ricotta", apiService: PreviewAPIService()))
     }
 }

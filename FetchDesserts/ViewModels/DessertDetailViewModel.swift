@@ -9,7 +9,7 @@ import os
 ///
 @MainActor
 class DessertDetailViewModel: ObservableObject {
-    private let apiService: APIService = APIService()
+    private let apiService: APIService
     private(set) var mealID: String
     private(set) var mealTitle: String
     private let logger = Logger(subsystem: "com.an23lm.FetchDesserts", category: "DessertDetailViewModel")
@@ -21,6 +21,13 @@ class DessertDetailViewModel: ObservableObject {
     init(mealID: String, mealTitle: String) {
         self.mealTitle = mealTitle.capitalized
         self.mealID = mealID
+        self.apiService = APIService()
+    }
+    
+    init(mealID: String, mealTitle: String, apiService: APIService) {
+        self.mealTitle = mealTitle.capitalized
+        self.mealID = mealID
+        self.apiService = apiService
     }
     
     @Sendable func refreshData() async {
