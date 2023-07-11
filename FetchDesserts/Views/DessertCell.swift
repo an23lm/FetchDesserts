@@ -1,5 +1,10 @@
 import SwiftUI
 
+/// View which displays details of a meal such as thumbnail image, name, and meal ID.
+///
+/// - Parameters:
+///   - meal: The `Meal` object to be displayed
+///
 struct DessertCell: View {
     let meal: Meal
     
@@ -17,7 +22,6 @@ struct DessertCell: View {
                 MealIDText(mealID: meal.idMeal)
             }
         }
-        
     }
 }
 

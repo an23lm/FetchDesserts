@@ -1,5 +1,7 @@
 import Foundation
 
+/// Generic service to with accepts a resouce, makes a network request and returns the decoded response
+///
 class APIService {
     
     func load<T: Codable>(_ resource: Resource<T>) async throws -> T {

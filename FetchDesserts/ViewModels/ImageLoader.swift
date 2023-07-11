@@ -1,21 +1,15 @@
 import SwiftUI
 
+/// View Model used by CachedAsyncImage
+///
+/// - Parameters:
+///   - url: URL of the image to be loaded
+///
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     
     private var url: URL!
     private var task: URLSessionDataTask?
-    
-    init(url: String) {
-        guard let newUrl = URL(string: url) else {
-            print("Invalid URL passed to ImageLoader \(url)")
-            
-            return
-        }
-        
-        self.url = newUrl
-        loadImage()
-    }
     
     init(url: URL?) {
         guard (url != nil) else {

@@ -10,7 +10,7 @@ struct FetchDessertsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DessertListView()
+            DessertListView(viewModel: DessertListViewModel())
         }
     }
 }

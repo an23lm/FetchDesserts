@@ -1,5 +1,7 @@
 import Foundation
 
+/// enum of Http Methods supposed for networking
+///
 enum HttpMethod {
     case get([URLQueryItem])
     case post(Data?)

@@ -1,5 +1,10 @@
 import SwiftUI
 
+/// View which displays the mealID provided
+///
+/// - Parameters:
+///   - mealID: meal ID string to be displayed
+///
 struct MealIDText: View {
     let mealID: String
     

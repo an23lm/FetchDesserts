@@ -1,5 +1,7 @@
 import Foundation
 
+/// Data structure representing a Meal
+///
 struct Meal: Codable {
     /// API Fields
     let idMeal: String

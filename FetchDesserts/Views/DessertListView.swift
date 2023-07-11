@@ -1,45 +1,49 @@
 import SwiftUI
 
+/// View which displays a list of desserts available on MealDB
+///
+/// - Parameters:
+///   - viewModel: DessertListViewModel
+///
 struct DessertListView: View {
     
-    let viewModel = MealViewModel()
-    @State var desserts: [Meal]? = nil
-    
-    @Sendable func refreshData() async {
-        do {
-            let desserts = try await viewModel.getDesserts()
-            self.desserts = desserts
-            print("loaded")
-        } catch {
-            print(error)
-            // Handle Error
-        }
-    }
+    @ObservedObject var viewModel: DessertListViewModel
     
     var body: some View {
-            NavigationView {
-                ZStack {
-                    if desserts == nil {
-                        ProgressView("Loading...")
+        NavigationView {
+            ZStack {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                } else if viewModel.meals == nil || viewModel.error != nil {
+                    VStack(spacing: 8) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.largeTitle)
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundColor(Color.yellow)
+                        Text("Oh no! Something went wrong")
+                        Text(viewModel.error ?? "")
+                            .isHidden(viewModel.error, remove: true)
                     }
-                    List(desserts ?? [], id: \.idMeal) { meal in
+                } else {
+                    List(viewModel.meals!, id: \.idMeal) { meal in
                         NavigationLink {
-                            DessertDetailView(mealID: meal.idMeal, mealTitle: meal.strMeal)
+                            DessertDetailView(viewModel: DessertDetailViewModel(mealID: meal.idMeal, mealTitle: meal.strMeal))
                         } label: {
                             DessertCell(meal: meal)
                         }
                     }
                     .listStyle(.plain)
-                    .navigationTitle(Text("Desserts"))
-                    .refreshable(action: refreshData)
+                    .refreshable(action: viewModel.refreshData)
                 }
             }
-            .task(refreshData)
+            .navigationTitle(Text("Desserts"))
         }
+        .task(viewModel.refreshData)
+    }
 }
 
 struct DessertListView_Previews: PreviewProvider {
     static var previews: some View {
-        DessertListView()
+        DessertListView(viewModel: DessertListViewModel())
     }
 }

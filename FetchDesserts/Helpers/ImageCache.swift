@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// Class to mange the cache of images
+///
 class ImageCache {
     static let shared = ImageCache()
 
