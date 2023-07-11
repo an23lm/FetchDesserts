@@ -80,7 +80,7 @@ struct DessertDetailView: View {
                                             .font(.system(.body, design: .monospaced, weight: .semibold))
                                     }
                                     .padding()
-                                    .background(index % 2 == 0 ? Color(.quaternaryLabel) : Color.clear)
+                                    .background(index % 2 == 0 ? Color(.systemGray6) : Color.clear)
                                     .cornerRadius(8)
                                 }
                             }
@@ -128,18 +128,19 @@ struct DessertDetailView: View {
                             
                             Button(action: openWebpage(withURL: viewModel.meal!.sourceURL)) {
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .fill(Color(.systemGray6))
+                                    .fill(Color(.systemBlue))
                                     .overlay(alignment: .leading) {
                                         ZStack(alignment: .leading) {
                                             Image(systemName: "safari.fill")
                                                 .imageScale(.large)
                                                 .symbolRenderingMode(.hierarchical)
                                                 .padding()
+                                                .foregroundColor(.white)
                                             HStack {
                                                 Spacer()
                                                 Text("Visit Website")
                                                     .font(.system(.headline, weight: .semibold))
-                                                    .foregroundColor(.secondary)
+                                                    .foregroundColor(.white)
                                                 Spacer()
                                             }
                                             .padding(8)
@@ -163,6 +164,6 @@ struct DessertDetailView: View {
 
 struct DessertDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DessertDetailView(viewModel: DessertDetailViewModel(mealID: "52767", mealTitle: "Test Dessert"))
+        DessertDetailView(viewModel: DessertDetailViewModel(mealID: "53049", mealTitle: "Test Dessert"))
     }
 }

@@ -15,7 +15,7 @@ struct MealIDText: View {
             .foregroundColor(.secondary)
             .background {
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(Color(.quaternaryLabel))
+                    .fill(Color(.systemGray6))
             }
     }
 }
