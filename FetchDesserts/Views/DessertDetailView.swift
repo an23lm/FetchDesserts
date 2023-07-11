@@ -111,7 +111,8 @@ struct DessertDetailView: View {
                                                 .renderingMode(.original)
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
-                                                .padding(14)
+                                                .padding()
+                                                .padding(.leading, 1)
                                             HStack {
                                                 Spacer()
                                                 Text("Watch and Cook")
@@ -132,7 +133,7 @@ struct DessertDetailView: View {
                                     .overlay(alignment: .leading) {
                                         ZStack(alignment: .leading) {
                                             Image(systemName: "safari.fill")
-                                                .imageScale(.large)
+                                                .font(Font.title)
                                                 .symbolRenderingMode(.hierarchical)
                                                 .padding()
                                                 .foregroundColor(.white)
